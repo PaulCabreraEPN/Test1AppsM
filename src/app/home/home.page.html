@@ -5,76 +5,114 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+
   <form #form="ngForm" (ngSubmit)="enviarFormulario()" novalidate>
-    <!-- Nombre -->
-    <ion-item>
-      <ion-label position="floating">Nombre completo</ion-label>
-      <ion-input [(ngModel)]="sender" name="sender" required></ion-input>
-    </ion-item>
-    <ion-text color="danger" *ngIf="form.submitted && !sender">
-      <p>Este campo es obligatorio.</p>
-    </ion-text>
 
+    <div class="form-group">
+      <!-- Nombre completo -->
+      <ion-item>
+        <ion-label position="floating">Nombre completo</ion-label>
+        <ion-input [(ngModel)]="sender" name="sender" required></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="form.submitted && !sender">
+        <p>Este campo es obligatorio.</p>
+      </ion-text>
+    </div>
+
+
+    <div class="form-group">
+      <!-- Carrera deseada -->
+      <ion-item>
+        <ion-label>Carrera deseada</ion-label>
+        <ion-select [(ngModel)]="course" name="course" placeholder="Seleccione una carrera" required>
+          <ion-select-option value="Ingeniería de Sistemas">Ingeniería de Sistemas</ion-select-option>
+          <ion-select-option value="Medicina">Medicina</ion-select-option>
+          <ion-select-option value="Arquitectura">Arquitectura</ion-select-option>
+          <ion-select-option value="Administración de Empresas">Administración de Empresas</ion-select-option>
+          <ion-select-option value="Derecho">Derecho</ion-select-option>
+          <ion-select-option value="Psicología">Psicología</ion-select-option>
+          <ion-select-option value="Contabilidad">Contabilidad</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-text color="danger" *ngIf="form.submitted && !course">
+        <p>Debes seleccionar una carrera.</p>
+      </ion-text>
+    </div>
+    
     <!-- Edad -->
-    <ion-item>
-      <ion-label position="floating">Edad</ion-label>
-      <ion-input type="number" [(ngModel)]="age" name="age" required min="16"></ion-input>
-    </ion-item>
-    <ion-text color="danger" *ngIf="form.submitted && (!age || age < 16)">
-      <p>Debes tener al menos 16 años.</p>
-    </ion-text>
+    <div class="form-group">
+      <ion-item>
+        <ion-label position="floating">Edad</ion-label>
+        <ion-input [(ngModel)]="age" name="age" required type="number" min="18"></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="form.submitted && (!age || age < 18)">
+        <p>Por favor ingresa una edad válida (mínimo 18 años).</p>
+      </ion-text>
+    </div>
+    
 
-    <!-- Carrera (combo box - popup) -->
-    <ion-item>
-      <ion-label>Carrera deseada</ion-label>
-      <ion-select [(ngModel)]="course" name="course" placeholder="Seleccione una carrera" required>
-        <ion-select-option value="Ingeniería de Sistemas">Ingeniería de Sistemas</ion-select-option>
-        <ion-select-option value="Medicina">Medicina</ion-select-option>
-        <ion-select-option value="Arquitectura">Arquitectura</ion-select-option>
-        <ion-select-option value="Administración de Empresas">Administración de Empresas</ion-select-option>
-        <ion-select-option value="Derecho">Derecho</ion-select-option>
-        <ion-select-option value="Psicología">Psicología</ion-select-option>
-        <ion-select-option value="Contabilidad">Contabilidad</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-text color="danger" *ngIf="form.submitted && !course">
-      <p>Debes seleccionar una carrera.</p>
-    </ion-text>
+    <div class="form-group">
+      <!-- Correo electrónico -->
+      <ion-item>
+        <ion-label position="floating">Correo electrónico</ion-label>
+        <ion-input type="email" [(ngModel)]="email" name="email" required email></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="form.submitted && !email">
+        <p>Ingresa un correo válido.</p>
+      </ion-text>
+    </div>
 
-    <!-- Correo -->
-    <ion-item>
-      <ion-label position="floating">Correo electrónico</ion-label>
-      <ion-input type="email" [(ngModel)]="email" name="email" required email></ion-input>
-    </ion-item>
-    <ion-text color="danger" *ngIf="form.submitted && !email">
-      <p>Ingresa un correo válido.</p>
-    </ion-text>
+    <div class="form-group">
+      <!-- Ciudad -->
+      <ion-item>
+        <ion-label>Ciudad</ion-label>
+        <ion-select [(ngModel)]="city" name="city" placeholder="Seleccione una ciudad" required>
+          <ion-select-option value="Quito">Quito</ion-select-option>
+          <ion-select-option value="Guayaquil">Guayaquil</ion-select-option>
+          <ion-select-option value="Cuenca">Cuenca</ion-select-option>
+          <ion-select-option value="Ambato">Ambato</ion-select-option>
+          <ion-select-option value="Loja">Loja</ion-select-option>
+          <ion-select-option value="Manta">Manta</ion-select-option>
+          <ion-select-option value="Ibarra">Ibarra</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-text color="danger" *ngIf="form.submitted && !city">
+        <p>Debes seleccionar una ciudad.</p>
+      </ion-text>
+    </div>
 
-    <!-- Ciudad (combo box - popup) -->
-    <ion-item>
-      <ion-label>Ciudad</ion-label>
-      <ion-select [(ngModel)]="city" name="city" placeholder="Seleccione una ciudad" required>
-        <ion-select-option value="Quito">Quito</ion-select-option>
-        <ion-select-option value="Guayaquil">Guayaquil</ion-select-option>
-        <ion-select-option value="Cuenca">Cuenca</ion-select-option>
-        <ion-select-option value="Ambato">Ambato</ion-select-option>
-        <ion-select-option value="Loja">Loja</ion-select-option>
-        <ion-select-option value="Manta">Manta</ion-select-option>
-        <ion-select-option value="Ibarra">Ibarra</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-text color="danger" *ngIf="form.submitted && !city">
-      <p>Debes seleccionar una ciudad.</p>
-    </ion-text>
+    <div class="form-group">
+      <!-- Teléfono -->
+      <ion-item>
+        <ion-label position="floating">Teléfono</ion-label>
+        <ion-input [(ngModel)]="phone" name="phone" required pattern="^[0-9]{7,10}$"></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="form.submitted && !phone">
+        <p>Ingresa un número de teléfono válido (7 a 10 dígitos).</p>
+      </ion-text>
+    </div>
 
-    <!-- Teléfono -->
-    <ion-item>
-      <ion-label position="floating">Teléfono</ion-label>
-      <ion-input [(ngModel)]="phone" name="phone" required pattern="^[0-9]{7,10}$"></ion-input>
-    </ion-item>
-    <ion-text color="danger" *ngIf="form.submitted && !phone">
-      <p>Ingresa un número de teléfono válido (7 a 10 dígitos).</p>
-    </ion-text>
+    <div class="form-group">
+      <!-- Dirección -->
+      <ion-item>
+        <ion-label position="floating">Dirección</ion-label>
+        <ion-input [(ngModel)]="address" name="address" required></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="form.submitted && !address">
+        <p>Este campo es obligatorio.</p>
+      </ion-text>
+    </div>
+
+    <div class="form-group">
+      <!-- Nivel de Inglés -->
+      <ion-item>
+        <ion-label position="floating">Nivel de Inglés</ion-label>
+        <ion-input [(ngModel)]="englishLevel" name="englishLevel" required></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="form.submitted && !englishLevel">
+        <p>Este campo es obligatorio.</p>
+      </ion-text>
+    </div>
 
     <!-- Botón Enviar -->
     <ion-button 
@@ -97,8 +135,10 @@
         <p>Carrera: {{ f.course }}</p>
         <p>Edad: {{ f.age }} | Ciudad: {{ f.city }}</p>
         <p>Email: {{ f.email }} | Tel: {{ f.phone }}</p>
+        <p>Dirección: {{ f.address }} | Nivel de Inglés: {{ f.englishLevel }}</p>
         <p><i>{{ f.createdAt | date:'short' }}</i></p>
       </ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
+

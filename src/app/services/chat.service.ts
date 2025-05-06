@@ -6,11 +6,13 @@ export interface Formulario {
   createdAt: number;
   sender: string;
   id?: string;
-  age: number;
+  age: number ;
   course: string;
   email: string;
   city: string;
   phone: string;
+  address?: string;
+  englishLevel?: string;
 }
 
 @Injectable({

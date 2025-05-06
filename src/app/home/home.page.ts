@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ChatService, Formulario } from '../services/chat.service';
 import { NgIf, NgFor } from '@angular/common';
+
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -14,11 +16,13 @@ import { NgIf, NgFor } from '@angular/common';
 export class HomePage implements OnInit {
   formularios: Formulario[] = [];
   sender = '';
-  age: number = 0;
+  age = 0;
   course = '';
   email = '';
   city = '';
-  phone = '';;
+  phone = '';
+  address = '';
+  englishLevel = '';
 
   constructor(private chatService: ChatService) {}
 
@@ -36,7 +40,9 @@ export class HomePage implements OnInit {
         course: this.course,
         email: this.email,
         city: this.city,
-        phone: this.phone
+        phone: this.phone,
+        address: this.address,
+        englishLevel: this.englishLevel,
       }).then(() => {
         this.resetForm();
       });
@@ -44,11 +50,15 @@ export class HomePage implements OnInit {
   }
 
   resetForm() {
-    this.sender = '';
-    this.age = 0;
+    this.sender = ''; 
     this.course = '';
     this.email = '';
     this.city = '';
     this.phone = '';
+    this.address = '';
+    this.englishLevel = '';
+    this.age = 0;
+    this.sender = '';
+   
   }
 }
